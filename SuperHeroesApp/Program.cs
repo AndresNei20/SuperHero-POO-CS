@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Text;
+using SuperHeroesApp.Models;
 
 Console.WriteLine("Hello, World!");
 
@@ -38,7 +39,7 @@ var xRayVision = new SuperPower
     Level = PowerLevel.Low
 };
 
-var superman = new SuperHeroe();
+var superman = new SuperHero();
 List<SuperPower> supermanPowers = new List<SuperPower>();
 supermanPowers.Add(fly);
 supermanPowers.Add(superStrength);
@@ -46,7 +47,7 @@ supermanPowers.Add(iceBreath);
 supermanPowers.Add(laserEyes);
 supermanPowers.Add(xRayVision);
 
-superman.Name = "Superman";
+superman.Name = "    Superman   ";
 superman.Description = "A Kriptonian that lives on planet earth at metropolis, he loves to save the day and defeat Lex Luthor";
 superman.SecretIdentity = "Clark Kent";
 superman.City = "Metropolis";
@@ -59,7 +60,7 @@ superman.CanFly = true;
 string resultPowers = superman.UseSuperPower();
 Console.WriteLine(resultPowers);
 
-var batman = new SuperHeroe();
+var batman = new SuperHero();
 
 batman.Name = "Batman";
 batman.Description = "A man with a bat suit that defends Gotham city from villians like Joker, Penguin and the Riddler";
@@ -70,103 +71,8 @@ batman.IsAlive = true;
 batman.IsHuman = true;
 batman.CanFly= false;
 
-
-
-class SuperHeroe
-{
-    private List<SuperPower> _superPowers;
-    private bool _hasSuperPowers;
-
-    public Guid Id { get; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public string SecretIdentity { get; set; }
-    public string City { get; set; }
-    public bool HasSuperPowers
-    {
-        get => _hasSuperPowers;
-        set
-        {
-            _hasSuperPowers = value;
-            if (!value)
-            {
-                _superPowers = null;
-            }
-        }
-    }
-    public List<SuperPower> SuperPowers
-    {
-        get => _superPowers;
-        set
-        {
-            if (!_hasSuperPowers)
-            {
-                throw new InvalidOperationException("Cannot set SuperPowers when HasSuperPowers is false.");
-            }
-            _superPowers = value;
-        }
-    }
-
-    public bool IsAlive { get; set; }
-    public bool IsHuman { get; set; }
-    public bool CanFly { get; set; }
-
-    /* This DOES NOT RETURN ANYTHING, it just prints the powers to the console, but we want to return a string with the powers
-    public void UseSuperPower()
-    {
-        
-        foreach (var power in SuperPowers)
-        {
-            Console.WriteLine($"{Name} uses {power.Name}!");
-        }
-
-    }
-    */
-
-    //Method that returns a string with the powers of the superhero
-    public string UseSuperPower()
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach (var power in SuperPowers)
-        {
-            sb.AppendLine($"{Name} uses {power.Name}!!!");
-        }
-
-        return sb.ToString();
-    }
-
-    //Constructor
-    public SuperHeroe()
-    {
-        Id = Guid.NewGuid();
-        Name = "";
-        Description = "";
-        SecretIdentity = "";
-        City = "";
-        _hasSuperPowers = false;
-        _superPowers = new List<SuperPower>();
-        IsAlive = true;
-        IsHuman = true;
-        CanFly = false;
-    }
-}
-
-public class SuperPower
-{
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public PowerLevel Level { get; set; }
-
-    //Constructor
-    public SuperPower()
-    {
-        Name = "";
-        Description = "";
-        Level = PowerLevel.Low;
-
-    }
-
-}
+Console.WriteLine("\nPress any key to exit...");
+Console.ReadKey();
 
 public enum PowerLevel
 {
@@ -189,20 +95,5 @@ public record SuperHeroRecord(
     bool isHuman, 
     bool Canfly)
 {
-    public string UseSuperPower()
-    {
-        if (!HasSuperPowers || SuperPowers is null || SuperPowers.Count == 0)
-        {
-            return $"{Name} has no super powers.";
-        }
 
-        StringBuilder sb = new StringBuilder();
-
-        foreach (var power in SuperPowers)
-        {
-            sb.AppendLine($"{Name} uses {power.Name}!!!");
-        }
-
-        return sb.ToString();
-    }
 } // Example of using the RECORD
