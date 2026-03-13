@@ -67,6 +67,11 @@ superman.CanFly = true;
 string resultPowers = superman.UseSuperPower();
 Console.WriteLine(resultPowers);
 
+string resultSaveTheWorld = superman.SaveTheWorld();
+Console.WriteLine($"{resultSaveTheWorld}\n");
+string resultSaveEarth = superman.SaveEarth();
+Console.WriteLine($"{resultSaveEarth}\n");
+
 var batman = new SuperHero();
 
 batman.Name = "Batman";

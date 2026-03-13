@@ -3,14 +3,14 @@ using System.Text;
 
 namespace SuperHeroesApp.Models;
 
-public class SuperHero
+ class SuperHero : Hero
 {
     private List<SuperPower> _superPowers;
     private bool _hasSuperPowers;
     private string _name;
 
     public Guid Id { get; }
-    public string Name 
+    public override string Name 
         { get
             {
                 return _name;
@@ -83,6 +83,11 @@ public class SuperHero
         }
 
         return sb.ToString();
+    }
+
+    public override string SaveTheWorld()
+    {
+        return $"{NameAndSecretIdendity} saves the world!";
     }
 
     //Constructor
