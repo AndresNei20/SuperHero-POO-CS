@@ -9,7 +9,9 @@ namespace SuperHeroesApp.Models
         public abstract string Name { get; set; }
         public abstract string SaveTheWorld();
         // Abstract method is used to force the derived classes to implement it, it does not have a body and it is declared with the abstract keyword, it can only be used in an abstract class
-        public string SaveEarth()
+        
+        //Virtual makes the method capable to change (POLIMORFS)
+        public virtual string SaveEarth()
         {
             return $"{Name} save the Earth!!!";
         }

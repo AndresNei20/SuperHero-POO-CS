@@ -90,6 +90,12 @@ namespace SuperHeroesApp.Models;
         return $"{NameAndSecretIdendity} saves the world!";
     }
 
+    public override string SaveEarth()
+    {
+        //return base.SaveEarth();
+        return $"{NameAndSecretIdendity} saves the Earth!!!!!";
+    }
+
     //Constructor
     public SuperHero()
     {
