@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Text;
-using SuperHeroesApp.Models;
+using SuperHeroesApp.Models; //This is where we can "import" all our classes
 
 Console.WriteLine("Hello, World!");
 
@@ -39,6 +39,13 @@ var xRayVision = new SuperPower
     Level = PowerLevel.Low
 };
 
+var regeneration = new SuperPower
+{
+    Name = "Regeneration",
+    Description = "The ability to heal rapidly from injuries and regenerate lost body parts.",
+    Level = PowerLevel.Godlike
+};
+
 var superman = new SuperHero();
 List<SuperPower> supermanPowers = new List<SuperPower>();
 supermanPowers.Add(fly);
@@ -70,6 +77,29 @@ batman.HasSuperPowers = false;
 batman.IsAlive = true;
 batman.IsHuman = true;
 batman.CanFly= false;
+
+//Antihero
+
+//Deadpool superpowers
+List<SuperPower> deadpoolPowers = new List<SuperPower>();
+deadpoolPowers.Add(regeneration);
+
+var deadpool = new AntiHero();
+deadpool.Name = "Deadpool";
+deadpool.Description = "A mercenary with a twisted sense of humor and a regenerative healing factor, known for breaking the fourth wall.";
+deadpool.SecretIdentity = "Wade Wilson";
+deadpool.City = "Unknown";
+deadpool.HasSuperPowers = true;
+deadpool.SuperPowers = deadpoolPowers;
+
+deadpool.IsAlive = true;
+deadpool.IsHuman = true;
+deadpool.CanFly = false;
+string resultDeadpooltPowers = deadpool.UseSuperPower();
+Console.WriteLine(resultDeadpooltPowers);
+
+Console.WriteLine(deadpool.DoAntiHeroAction("break the fourth wall and make jokes about the audience"));
+
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
