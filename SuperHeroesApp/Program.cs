@@ -1,8 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Text;
+using SuperHeroesApp;
 using SuperHeroesApp.Models; //This is where we can "import" all our classes
 
 Console.WriteLine("Hello, World!");
+
+//Interface test
+var printInfo = new PrintSuperHero();
 
 var fly = new SuperPower
 {
@@ -46,6 +50,7 @@ var regeneration = new SuperPower
     Level = PowerLevel.Godlike
 };
 
+//SUPERMAN
 var superman = new SuperHero();
 List<SuperPower> supermanPowers = new List<SuperPower>();
 supermanPowers.Add(fly);
@@ -72,6 +77,10 @@ Console.WriteLine($"{resultSaveTheWorld}\n");
 string resultSaveEarth = superman.SaveEarth();
 Console.WriteLine($"{resultSaveEarth}\n");
 
+printInfo.PrintSuperhero(superman);
+
+
+//BATMAN
 var batman = new SuperHero();
 
 batman.Name = "Batman";
@@ -84,6 +93,7 @@ batman.IsHuman = true;
 batman.CanFly= false;
 
 //Antihero
+//DEADPOOL
 
 //Deadpool superpowers
 List<SuperPower> deadpoolPowers = new List<SuperPower>();
@@ -105,10 +115,14 @@ Console.WriteLine(resultDeadpooltPowers);
 
 Console.WriteLine(deadpool.DoAntiHeroAction("break the fourth wall and make jokes about the audience"));
 
+printInfo.PrintSuperhero(deadpool);
+
 
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
 
+
+//enum
 public enum PowerLevel
 {
        Low,

@@ -1,9 +1,10 @@
+using SuperHeroesApp.Interfaces;
 using System;
 using System.Text;
 
 namespace SuperHeroesApp.Models;
 
- class SuperHero : Hero
+ class SuperHero : Hero, ISuperHero
 {
     private List<SuperPower> _superPowers;
     private bool _hasSuperPowers;
@@ -90,6 +91,7 @@ namespace SuperHeroesApp.Models;
         return $"{NameAndSecretIdendity} saves the world!";
     }
 
+    //Polimorph
     public override string SaveEarth()
     {
         //return base.SaveEarth();
